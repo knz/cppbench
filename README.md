@@ -7,8 +7,8 @@ meaningful comparisons.
 
 To compile the included example program run:
 
-   $ c++ -O3 -o bench bench.cc example.cc
-   $ ./a.out
+    $ c++ -O3 -o bench bench.cc example.cc
+    $ ./a.out
 
 To define your own benchmark function use the following model,
 analogous to Go's benchmarking facility:
