@@ -153,13 +153,14 @@ struct BDef {
 #define Bench(Func) (BDef{ #Func, Func })
 #define AutoBench(...) RunBenchmarks(std::vector<BDef>{ __VA_ARGS__ })
 
-// Use NOPW(x) inside of the benchmarking loop to ensure a loop does
+// Use NOP(x) inside of the benchmarking loop to ensure a loop does
 // not get optimized away.
-#define NOPW(x) __asm__ __volatile__("" :: "r"(x))
+#define NOP(x) __asm__ __volatile__("" : "=r"(x) : "r"(x))
 
-// Use NOPF(x) inside of the benchmarking loop to ensure a loop does
-// not get optimized away.
-#define NOPF(x) __asm__ __volatile__("" :: "rf"(x))
+// Use CONSUME at the end of the benchmarking loop to use any derived
+// results. This stops the benchmarking timer.
+#define CONSUME(b, ...) do { b->StopTimer(); _CONSUME(__VA_ARGS__); } while(0)
+void _CONSUME(...);
 
 // Runs a set of benchmarks.
 void RunBenchmarks(const std::vector<BDef> &benchmarks);

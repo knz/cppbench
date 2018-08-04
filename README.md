@@ -7,8 +7,8 @@ meaningful comparisons.
 
 To compile the included example program run:
 
-    $ c++ -O3 -o bench bench.cc example.cc
-    $ ./a.out
+    $ c++ -std=c++17 -O3 -o bench bench.cc example.cc
+    $ ./bench
 
 To define your own benchmark function use the following model,
 analogous to Go's benchmarking facility:
@@ -32,10 +32,10 @@ Then compile your program with the enclosed `bench.hh` and `bench.cc`.
 
 **Beware!** C++ compilers tend to be agressive at eliminating dead
 code and folding loops, much more than the Go compiler. To ensure that
-the benchmark loops runs for all N iterations, peruse the enclosed
-`NOPW()` (for integer/pointers variables) and `NOPF()` (for
-float/double variables) macros on derived results. See the example
-usage in `example.cc`.
+the benchmark loops runs for all N iterations, peruse the provided
+pseudo-functions `NOP(i)` (inside the loop, on the loop counter) and
+`CONSUME()` (at the end, for computer results). See the example usage
+in `example.cc`.
 
 The following functionality are supported:
 

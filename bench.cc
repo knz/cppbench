@@ -323,3 +323,6 @@ void benchContext::processBench(B *pb) {
 		fprintf(stderr, "%s\n", results.c_str());
 	}
 }
+
+__attribute__((noinline))
+void _CONSUME(...) {}
