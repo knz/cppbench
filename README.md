@@ -30,11 +30,28 @@ int main() {
 
 Then compile your program with the enclosed `bench.hh` and `bench.cc`.
 
+**Beware!** C++ compilers tend to be agressive at eliminating dead
+code and folding loops, much more than the Go compiler. To ensure that
+the benchmark loops runs for all N iterations, peruse the enclosed
+`NOPW()` (for integer/pointers variables) and `NOPF()` (for
+float/double variables) macros on derived results. See the example
+usage in `example.cc`.
+
 The following functionality are supported:
 
+- configuring the number of iterations of the benchmark with the
+  global variable `g_count`.
+- configuring the "chattiness" of the benchmark execution with
+  the global variable `g_chatty`.
+- configuring the benchmark time per iteration with the global
+  variable `g_benchTime`.
 - starting, stopping and resetting the timer with `b->StartTimer()`.
   `b->StopTimer()` and `b->ResetTimer()`.
 - running a sub-benchmark with `b->Run()`.
+
+(For the 3 global variables, either set them directly from your
+`main()` function, or you will need to define your own command-lin
+argument handling to customize them on every run.)
 
 The following functionality from Go's benchmarking library are not supported:
 
@@ -45,3 +62,5 @@ The following functionality from Go's benchmarking library are not supported:
 - benchmarking allocations.
 - `b.Parallel()`.
 - other functionality from Go's `testing` package.
+
+Happy benchmarking!
