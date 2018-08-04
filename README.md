@@ -36,8 +36,10 @@ Then compile your program with the enclosed `bench.hh` and `bench.cc`.
 code and folding loops, much more than the Go compiler. To ensure that
 the benchmark loops runs for all N iterations, peruse the provided
 pseudo-functions `NOP(i)` (inside the loop, on the loop counter) and
-`CONSUME()` (at the end, for computer results). See the example usage
+`CONSUME()` (at the end, for computed results). See the example usage
 in `example.cc`.
+
+### Differences with Go's `testing.B`
 
 The following functionality are supported:
 
