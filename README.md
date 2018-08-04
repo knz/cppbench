@@ -10,6 +10,8 @@ To compile the included example program run:
     $ c++ -std=c++17 -O3 -o bench bench.cc example.cc
     $ ./bench
 
+(The equivalent Go benchmark lives in `go/example_test.go`.)
+
 To define your own benchmark function use the following model,
 analogous to Go's benchmarking facility:
 
