@@ -155,7 +155,7 @@ struct BDef {
 
 // Use NOP(x) inside of the benchmarking loop to ensure a loop does
 // not get optimized away.
-#define NOP(x) __asm__ __volatile__("" : "=r"(x) : "r"(x))
+#define NOP(x) __asm__ __volatile__("" : "=r"(x) : "0"(x))
 
 // Use CONSUME at the end of the benchmarking loop to use any derived
 // results. This stops the benchmarking timer.
